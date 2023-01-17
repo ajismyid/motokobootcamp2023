@@ -1,4 +1,4 @@
-##**Day 1**
+# **Day 1**
 
 1. How much is the current memory capacity of a canister?<br>  
    >*Answer: 4Gb*
