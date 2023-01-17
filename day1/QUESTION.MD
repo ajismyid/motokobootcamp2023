@@ -12,7 +12,7 @@
    };
   }
   ```
-  *Answer: variable counter is set immutable*
+  >*Answer: variable counter is set immutable*
 
 3. What is the issue with the following code sample?<br>
   ```
@@ -29,7 +29,7 @@
     };
   }
   ```
-  *Answer: variable message type is Text, cannot be assigned with Nat / Int*
+  >*Answer: variable message type is Text, cannot be assigned with Nat / Int*
 
 4. False or True: we can remove the keyword async for return argument of a query function since queries are faster to answer.<br>
-  *Answer: False*
+  >*Answer: False*
