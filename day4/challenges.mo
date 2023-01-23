@@ -5,6 +5,9 @@ import char "mo:base/Char";
 import text "mo:base/Text";
 import iter "mo:base/Iter";
 import buffer "mo:base/Buffer";
+import HashMap "mo:base/HashMap";
+import Iter "mo:base/Iter";
+import Principal "mo:base/Principal";
 
 actor{
 
