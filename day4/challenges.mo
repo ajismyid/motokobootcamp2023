@@ -1,10 +1,9 @@
-import nat "mo:base/Nat";
-import array "mo:base/Array";
-import int "mo:base/Int";
-import char "mo:base/Char";
-import text "mo:base/Text";
-import iter "mo:base/Iter";
-import buffer "mo:base/Buffer";
+import List "mo:base/List";
+import Nat "mo:base/Nat";
+import Int "mo:base/Int";
+import Array "mo:base/Array";
+import Bool "mo:base/Bool";
+import Buffer "mo:base/Buffer";
 import HashMap "mo:base/HashMap";
 import Iter "mo:base/Iter";
 import Principal "mo:base/Principal";
@@ -41,11 +40,36 @@ actor{
 
     //Write a function is_anonymous that takes no arguments but returns a Boolean indicating if the caller is anonymous or not.
     //is_anynomous : () -> async Bool; 
-    
     public shared ({ caller }) func is_anynomous() : async Bool{
         return Principal.isAnonymous(caller);
     };
 
     //Write a function find_in_buffer that takes two arguments, buf of type Buffer and val of type T, and returns the optional index of the first occurrence of "val" in "buf".
     //find_in_buffer<T> :  (buf: Buffer.Buffer<T>, val: T, equal: (T,T) -> Bool) -> ?Nat
+    func find_in_buffer<T>(buf: Buffer.Buffer<T>, val: T) : ?Nat {
+        var index : ?Nat = null;
+        for (i in Iter.range(0, buf.size()-1)) {
+            if (buf.get(i) == val){
+                index := ?i;
+                return index;
+            }
+        };
+        return index;
+    };
+
+    //Add a function called get_usernames that will return an array of tuples (Principal, Text) which contains all the entries in usernames.
+    //get_usernames : () -> async [(Principal, Text)];
+    let usernames = HashMap.HashMap<Principal, Text>(0, Principal.equal, Principal.hash);
+
+    public shared ({ caller }) func add_username(name : Text) : async () {
+        usernames.put(caller, name);
+    };
+    
+    public query func get_usernames() : async [(Principal, Text)] {
+        var buffer = Buffer.Buffer<(Principal, Text)>(3);
+        for (pair in usernames.entries()){
+            buffer.add(pair);
+        };
+        return Buffer.toArray(buffer);
+    };
 }
