@@ -1,7 +1,7 @@
 # **Day 4**
 
 1. Is the heap memory saved when upgrading a canister? How much heap memory does a canister has?<br>  
-   >*Yes, the heap memory is saved during upgrading a canister. Currentyly each canister can have at most 4Gb of heap memory.*<br>
+   >*No, only stable memory is saved during upgrading a canister. Currentyly each canister can have at most 4Gb of memory.*<br>
 
 2. How much accounts can a unique Principal own?<br>
   
